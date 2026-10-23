@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050713">
+<title>VITALIY OS · RollCalc</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="eyebrow">VITALIY OS / INDUSTRIAL TOOLS</div>
+  <h1>ROLL<span>CALC</span></h1>
+  <div class="sub">Калькулятор довжини та ваги паперових ролів · працює без інтернету</div>
+</header>
+<main>
+  <section class="panel">
+    <h2>01 / Параметри</h2>
+    <div class="grid">
+      <div class="field"><label for="width">Ширина ролу, см</label><input id="width" type="number" inputmode="decimal" min="0.1" step="0.1" value="56"></div>
+      <div class="field"><label for="target">Цільова вага, кг</label><input id="target" type="number" inputmode="decimal" min="0.1" step="0.1" value="80"></div>
+      <div class="field"><label for="knownWidth">Відомий рол: ширина, см</label><input id="knownWidth" type="number" inputmode="decimal" min="0.1" step="0.1" value="56"></div>
+      <div class="field"><label for="knownWeight">Відомий рол: вага, кг</label><input id="knownWeight" type="number" inputmode="decimal" min="0.1" step="0.1" value="100"></div>
+      <div class="field"><label for="knownLength">Відомий рол: довжина, м</label><input id="knownLength" type="number" inputmode="decimal" min="0.1" step="0.1" value="0"></div>
+      <div class="field"><label for="knownTarget">Розрахувати для</label><select id="knownTarget"><option value="length">Потрібну довжину</option><option value="weight">Вагу заданої довжини</option></select></div>
+      <div class="field" id="desiredLengthWrap" style="display:none;grid-column:1/-1"><label for="desiredLength">Задана довжина, м</label><input id="desiredLength" type="number" inputmode="decimal" min="0.1" step="0.1" value="5000"></div>
+    </div>
+    <div class="actions"><button class="btn" id="calculate">РОЗРАХУВАТИ</button><button class="btn secondary" id="save">ЗБЕРЕГТИ РЕЗУЛЬТАТ</button></div>
+    <div class="status" id="status" aria-live="polite"></div>
+    <div class="note">Метод: пропорційний перерахунок за відомим ролом. Працює коректно, якщо щільність паперу та умови намотування однакові. Якщо ширина відомого ролу відрізняється, вага перераховується пропорційно ширині.</div>
+  </section>
+  <section class="panel"><h2>02 / Результат</h2><div class="result">
+    <div class="metric primary"><div class="label" id="mainLabel">ПОТРІБНА ДОВЖИНА</div><div class="value" id="mainValue">—</div></div>
+    <div class="metric violet"><div class="label">РОЗРАХУНКОВА ВАГА</div><div class="value" id="weightValue">—</div></div>
+    <div class="metric"><div class="label">ВАГА НА 1 МЕТР</div><div class="value" id="perMeter">—</div></div>
+    <div class="metric"><div class="label">ДОВЖИНА НА 1 КГ</div><div class="value" id="perKg">—</div></div>
+  </div></section>
+  <section class="panel"><h2>03 / Історія на цьому пристрої</h2><div id="history"><div class="note">Збережених розрахунків поки немає.</div></div>
+    <div class="actions"><button class="btn secondary" id="export">ЕКСПОРТ CSV</button><button class="btn danger" id="clear">ОЧИСТИТИ ІСТОРІЮ</button></div>
+    <div class="note">Історія зберігається локально, якщо середовище дозволяє сховище браузера. Експортуй CSV для резервної копії.</div>
+  </section>
+  <footer>VITALIY OS · ROLLCALC v1.1 · локальні обчислення · зовнішніх сервісів немає</footer>
+</main>
+<script src="app.js"></script>
+</body></html>
